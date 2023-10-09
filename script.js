@@ -1,7 +1,45 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-$(function () {
+$(function () {});
+
+// Declaring variables
+var todayMoment = moment().format("MMMM Do YYYY");
+
+var currentTime = moment().format("H A");
+
+// timeblocks
+var myWorkDay = [
+  { time: "9 AM", 
+    event: ""
+  },
+  { time: "10 AM",
+    event: ""
+  },
+  { time: "11 AM",
+    event: ""
+  },
+  { time: "12 AM",
+    event: ""
+  },
+  { time: "1 PM",
+    event: ""
+  },
+  { time: "2 PM",
+    event: ""
+  }, 
+  { time: "3 PM",
+    event: ""
+  },
+  { time: "4 PM",
+    event: ""
+  },
+  { time: "5 PM",
+    event: ""
+  },
+];
+
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
