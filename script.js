@@ -69,8 +69,8 @@ function saveEvents() {
 
 // display events
 function displayEvents() {
-  myWorkDay.forEach(function (_thisHour) {
-    $('#${_thisHour.id}').val(_thisHour.reminder);
+  myWorkDay.forEach(function (_currentHour) {
+    $('#${_currentHour.id}').val(_currentHour.reminder);
   })
 }
 
@@ -84,3 +84,51 @@ function init() {
   saveEvents();
   displayEvents();
 }
+
+// load Date
+getCurrentDate();
+
+// Visuals
+myWorkDay.forEach(function(currentHour) {
+  // timeblock row
+  var timeRow = $("<form>").attr({
+      "class": "row"
+  });
+
+  // time 
+  var timeField = $("<div>")
+    .text('${currentHour.hour}${currentHour.meridiem}')
+    .attr({
+        "class": "col-md-2 hour"
+    });
+
+    // data schedule
+  var timePlan = $("<div>")
+    .attr({
+      "class": "col-md-9 description p-0"
+    });
+  var planData = $("<textarea");
+  timePlan.append(planData);
+  planData.attr("id", currentHour.id);
+  if (currentHour.time < moment().format("HH")) {
+    planData.attr ({
+      "class": "past",
+    })
+  } else if (currentHour.time === moment().format("HH")) {
+    planData.attr({
+      "class": "present"
+    })
+  } else if (currentHour.time > moment().format("HH")) {
+      planData.attr ({
+        "class": "future"
+    })
+  }
+
+  // save buttons
+  var saveBtn = $("<i class='far fa-save fa-lg'></i>")
+  var savePlan = $("<button>")
+
+
+
+
+})
