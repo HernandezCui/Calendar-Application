@@ -20,4 +20,20 @@
   //
   // TODO: Add code to display the current date in the header of the page.
 
+
+
   // Declaring variables
+var currentDay = $("#currentDay");
+var currentHour = moment().hour("H");
+
+// displaying time and date on the header of page
+function updateTimeBlock() {
+  var dateElement = $("#date");
+  var timeElement = $("#time");
+  var currentDate = moment().format("dddd, MMM Do YYYY");
+  var currentTime = moment().format("hh:mm A");
+  dateElement.text(currentDate);
+  timeElement.text(currentTime);
+}
+
+
