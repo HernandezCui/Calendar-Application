@@ -21,19 +21,33 @@
   // TODO: Add code to display the current date in the header of the page.
 
 
+$(document).ready(function() {
 
-  // Declaring variables
-var currentDay = $("#currentDay");
-var currentHour = moment().hour("H");
+// Current date & time 
+const currentDate = dayjs().format('MMMM DD, YYYY');
+const currentTime = dayjs().format('HH:mm:ss');
+$("#date").text(currentDate);
+$("#time").text(currentTime);
 
-// displaying time and date on the header of page
-function updateTimeBlock() {
-  var dateElement = $("#date");
-  var timeElement = $("#time");
-  var currentDate = moment().format("dddd, MMM Do YYYY");
-  var currentTime = moment().format("hh:mm A");
-  dateElement.text(currentDate);
-  timeElement.text(currentTime);
-}
+// Color update time-block
+const currentHour = dayjs().hour();
+
+$(".time-div").each(function() {
+  const blockHour = parseInt($(this).attr("id").split("-")[1]);
+
+  if (blockHour < currentHour) {
+    $(this).find("textarea").addClass("past");
+  } else if (blockHour === currentHour) {
+    $(this).find("textarea").addClass("present");
+  } else {
+    $(this).find("textarea").addClass("future");
+  }
+});
 
 
+
+
+
+
+
+});
