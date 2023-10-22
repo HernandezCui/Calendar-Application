@@ -44,9 +44,19 @@ $(".time-div").each(function() {
   }
 });
 
+// save local storage
+$(".saveBtn").on("click", function() {
+  const blockId = $(this).parent().attr("id");
+  const text = $(this).siblings("textarea").val();
+  localStorage.setItem(blockId, text);
+});
 
-
-
+// load saved events from local storage
+$(".time-div").each(function() {
+  const blockId = $(this).attr("id");
+  const savedText = localStorage.getItem(blockId);
+  $(this).find("textarea").val(savedText);
+});
 
 
 
