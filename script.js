@@ -24,10 +24,12 @@
 $(document).ready(function() {
 
 // Current date & time 
-const currentDate = dayjs().format('MMMM DD, YYYY');
-const currentTime = dayjs().format('HH:mm:ss');
-$("#date").text(currentDate);
-$("#time").text(currentTime);
+$("#date").text(dayjs().format("MMMM D, YYYY"));
+// update time every second
+setInterval(function() {
+  $("#time").text(dayjs().format("HH:mm:ss"));
+}, 1000);
+
 
 // Color update time-block
 const currentHour = dayjs().hour();
